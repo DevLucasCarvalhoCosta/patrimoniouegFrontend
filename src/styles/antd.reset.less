@@ -1,0 +1,38 @@
+.ant-list-item {
+  padding: 12px 12px !important;
+}
+
+.ant-table-cell .ant-btn.ant-btn-link {
+  padding: 0 4px !important;
+}
+
+.ant-btn + .ant-btn {
+  margin-left: 10px;
+}
+
+/* Ajustes gerais de tabela */
+.ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ant-table-thead > tr > th {
+  font-weight: 600;
+}
+.ant-table-tbody > tr > td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Modo escuro: harmonização de tabela */
+body[theme-mode='dark'] {
+  .ant-table,
+  .ant-table-container,
+  .ant-table-content,
+  .ant-table-body {
+    background: transparent;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    background: rgba(255,255,255,0.04) !important;
+  }
+}

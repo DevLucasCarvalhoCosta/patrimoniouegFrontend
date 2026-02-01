@@ -1,0 +1,60 @@
+@keyframes logo-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  &-form {
+    width: 350px;
+    max-width: 92vw;
+    padding: 50px 40px 10px;
+    border-radius: 10px;
+
+    h2 {
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 16px;
+        animation: logo-pulse 2s ease-in-out infinite;
+        will-change: transform;
+        transition: transform 0.2s ease;
+      }
+    }
+
+    &_button {
+      width: 100%;
+    }
+  }
+}
+
+// (Sombra removida por solicitação)
+
+// Acessibilidade: reduzir animação quando preferido
+@media (prefers-reduced-motion: reduce) {
+  .login-page .logo img {
+    animation: none;
+  }
+}

@@ -1,0 +1,254 @@
+.layout-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9;
+    box-shadow: 0 4px 10px #dddddd;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    &-main {
+      padding: 0 15px;
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 64px;
+      width: 200px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-height: 42px;
+      }
+    }
+  }
+
+  &-sider {
+    box-sizing: border-box;
+  margin-bottom: 10px;
+  background: transparent;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  min-height: 0; // permite overflow interno funcionar
+
+    > :nth-child(1) .ant-tabs-bar {
+      padding: 6px 0 0;
+    }
+
+    > :nth-child(2) {
+      flex: auto;
+      min-height: 0;
+      overflow: auto;
+      padding: 6px;
+      box-sizing: border-box;
+
+      .innerText {
+        padding: 24px;
+        border-radius: 2px;
+        display: block;
+        line-height: 32px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-footer {
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 12px;
+  }
+
+  .actions {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >* {
+      margin-left: 30px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .notice {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .user-action {
+    cursor: pointer;
+  }
+
+  .user-avator {
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+body[theme-mode='dark'] {
+  .layout-page-header {
+    box-shadow: none;
+  }
+}
+
+// Fundo do container segue o tema
+[data-theme='light'] .layout-page-content > :nth-child(2) {
+  background-color: #fff;
+}
+[data-theme='dark'] .layout-page-content > :nth-child(2),
+body[theme-mode='dark'] .layout-page-content > :nth-child(2) {
+  background-color: #1f1f1f;
+}
+
+.layout-page-sider-menu {
+  border-right: none !important;
+
+  // Keep menu item selection consistent across light and dark modes
+  // Use a solid color so it looks identical in light and dark
+  @menu-selected-bg: #1d2362; // derived from mixing rgba(29,35,98,0.25) over #1f1f1f
+  @menu-hover-bg: #1d2362; // composite of rgba(29,35,98,0.12) over #1f1f1f
+
+  .ant-menu-item-selected,
+  .ant-menu-submenu-selected>.ant-menu-submenu-title {
+    background-color: @menu-selected-bg !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  // Ensure title text also turns white when selected
+  .ant-menu-item-selected .ant-menu-title-content,
+  .ant-menu-submenu-selected>.ant-menu-submenu-title .ant-menu-title-content {
+    color: #fff !important;
+  }
+
+  // Icons and links inherit white color when active/selected
+  .ant-menu-item-selected a,
+  .ant-menu-item-selected .ant-menu-item-icon,
+  .ant-menu-submenu-selected>.ant-menu-submenu-title a,
+  .ant-menu-submenu-selected>.ant-menu-submenu-title .ant-menu-item-icon,
+  .ant-menu-item-selected svg,
+  .ant-menu-submenu-selected>.ant-menu-submenu-title svg {
+    color: #fff !important;
+    fill: currentColor;
+  }
+
+  // Subtle hover color for better feedback
+  .ant-menu-item:hover,
+  .ant-menu-submenu-title:hover {
+    background-color: @menu-hover-bg !important;
+    color: #fff !important;
+  }
+
+  // Remove any default outline/border that may appear on active/hover
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    outline: none !important;
+    border: none !important;
+  }
+
+  // Hide pseudo-element lines that AntD may add
+  .ant-menu-item::after,
+  .ant-menu-submenu-title::after {
+    display: none !important;
+    border: none !important;
+  }
+}
+
+.ant-menu-inline-collapsed {
+  width: 79px !important;
+}
+
+.notice-description {
+  font-size: 12px;
+
+  &-datetime {
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+}
+
+.notice-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tagsView-extra {
+  height: 100%;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  line-height: 40px;
+  text-align: center;
+}
+
+.themeSwitch {
+  position: fixed;
+  right: 32px;
+  bottom: 102px;
+  cursor: pointer;
+
+  >span {
+    display: block;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 22px;
+    z-index: 10001;
+  }
+}
+
+.theme-color-content {
+  display: flex;
+
+  .theme-color-block {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

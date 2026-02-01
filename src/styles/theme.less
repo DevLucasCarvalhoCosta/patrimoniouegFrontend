@@ -1,0 +1,226 @@
+@light-1: #fff !important;
+@dark-1: #000 !important;
+@dark-2: #1f1f1f !important;
+@brand: rgb(29, 35, 98); 
+
+[data-theme="light"] {
+  background-color: @light-1;
+
+  .bg-1,
+  .bg-2 {
+    background-color: @light-1;
+  }
+
+  .ant-layout-sider {
+    background-color: @light-1;
+  }
+
+  // Garanta que a área de conteúdo use o fundo claro
+  .ant-layout,
+  .ant-layout-content,
+  .layout-page-content > :nth-child(2) {
+    background-color: @light-1;
+  }
+
+  .text-1 {
+    color: #000;
+  }
+
+  .text-2 {
+    color: rgba(0, 0, 0, .85);
+  }
+}
+
+// DARK THEME (via data-theme="dark")
+[data-theme="dark"] {
+  background-color: @dark-1;
+
+  .bg-1 {
+    background-color: @dark-1;
+  }
+
+  .bg-2 {
+    background-color: @dark-2;
+  }
+
+  .text-1 {
+    color: #fff;
+  }
+
+  // Layout e conteúdo com fundo escuro consistente
+  .ant-layout,
+  .ant-layout-content,
+  .layout-page-content > :nth-child(2) {
+    background-color: @dark-2;
+  }
+
+  // Tabs mais claros no tema escuro
+  .ant-tabs-top>.ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-bottom>.ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-top>div>.ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-bottom>div>.ant-tabs-nav .ant-tabs-ink-bar {
+    background: rgb(29, 35, 98) !important;
+  }
+
+  .ant-tabs-tab {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .ant-tabs-tab:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active {
+    border-color: #fff !important;
+    background: rgba(29, 35, 98, 0.12) !important;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: rgb(29, 35, 98) !important;
+  }
+
+
+  // Suporte quando o app usa body[theme-mode='dark'] em vez de data-theme
+  body[theme-mode='dark'] {
+  background-color: @dark-1;
+
+    .ant-tabs-top>.ant-tabs-nav .ant-tabs-ink-bar,
+    .ant-tabs-bottom>.ant-tabs-nav .ant-tabs-ink-bar,
+    .ant-tabs-top>div>.ant-tabs-nav .ant-tabs-ink-bar,
+    .ant-tabs-bottom>div>.ant-tabs-nav .ant-tabs-ink-bar {
+      background: rgb(29, 35, 98) !important;
+    }
+
+    .ant-tabs-tab {
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+
+    .ant-tabs-tab:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active {
+      border-color: #fff !important;
+      background: rgba(29, 35, 98, 0.12) !important;
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: rgb(29, 35, 98) !important;
+    }
+  }
+
+  .text-2 {
+    color: rgba(255, 255, 255, .65);
+  }
+
+  // Radio Button (selecionado) mais claro no tema escuro
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    background-color: rgba(29, 35, 98, 0.25) !important;
+    border-color: rgb(29, 35, 98) !important;
+    color: #fff !important;
+  }
+
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    background-color: rgba(29, 35, 98, 0.32) !important;
+  }
+}
+
+// Suporte quando o app usa body[theme-mode='dark'] em vez de data-theme
+body[theme-mode='dark'] {
+  // Fundo geral escuro
+  background-color: @dark-1;
+
+  // Layout/Conteúdo escuros
+  .ant-layout,
+  .ant-layout-content,
+  .layout-page-content > :nth-child(2) {
+    background-color: @dark-2;
+  }
+
+  // Tabelas no tema escuro: fundo e bordas
+  .ant-table,
+  .ant-table-container,
+  .ant-table-content,
+  .ant-table-body,
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    background-color: @dark-2 !important;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  // Cabeçalho da tabela levemente destacado
+  .ant-table-thead > tr > th {
+    background-color: fade(@brand, 12%) !important;
+  }
+
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    background-color: rgba(29, 35, 98, 0.25) !important;
+    border-color: rgb(29, 35, 98) !important;
+    color: #fff !important;
+  }
+
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    background-color: rgba(29, 35, 98, 0.32) !important;
+  }
+}
+
+// LIGHT como padrão quando não houver atributo de tema no body
+body:not([theme-mode='dark']) {
+  background-color: @light-1;
+
+  .ant-layout,
+  .ant-layout-content,
+  .layout-page-content > :nth-child(2) {
+    background-color: @light-1;
+  }
+}
+
+/* Scrollbars padronizados e sensíveis ao tema */
+/* Base (claro) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: fade(@brand, 35%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: fade(@brand, 55%);
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: fade(@brand, 50%) transparent;
+}
+
+/* Escuro */
+[data-theme="dark"] ::-webkit-scrollbar-thumb,
+body[theme-mode='dark'] ::-webkit-scrollbar-thumb {
+  background-color: fade(@brand, 70%);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover,
+body[theme-mode='dark'] ::-webkit-scrollbar-thumb:hover {
+  background-color: fade(@brand, 85%);
+}
+[data-theme="dark"] *,
+body[theme-mode='dark'] * {
+  scrollbar-color: fade(@brand, 75%) transparent;
+}
+
+/* Melhorias de scroll em containers principais */
+.layout-page-content > :nth-child(2),
+.ant-table-body,
+.ant-drawer-body,
+.ant-modal-body {
+  scrollbar-gutter: stable both-edges;
+  overscroll-behavior: contain;
+}
